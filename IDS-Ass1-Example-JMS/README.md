@@ -25,7 +25,11 @@ So first, on one host machine the Glassfish server must be started and configure
 
 In the lab you can just, run the script:
 
-startUpAndConfigureGlassfish.bat
+	ids-example-config-glassfish.bat <hostname>
+
+So, if you want to run Glassfish on host 'DSG10' you have to run the command:
+
+	ids-example-config-glassfish.bat DSG10
 
 In this script the following steps are performed:
 	- The server is startup by the command "asadmin start-domain"

@@ -11,7 +11,7 @@ public class SenderJMSMain {
 		if (args.length != 3) {
 			System.out
 					.println("Invalid usage. Three arguments needed: "
-							+ "java SenderGlassfishJMSMain <hostname> <connFactoryName> <queueName>");
+							+ "java SenderJMSMain <hostname> <connFactoryName> <queueName>");
 		} else {
 			try {
 

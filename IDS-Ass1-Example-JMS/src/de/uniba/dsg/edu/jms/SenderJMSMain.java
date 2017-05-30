@@ -22,7 +22,7 @@ public class SenderJMSMain {
 				contextParams.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.fscontext.RefFSContextFactory");
 				// TODO adjust this line if you have not set the storage to
 				// "file:///C:/TEMP/JndiStorage"
-				contextParams.put(Context.PROVIDER_URL, "file:///D:/TEMP/JmsStorage");
+				contextParams.put(Context.PROVIDER_URL, "file:///C:/TEMP/JndiStorage");
 
 				// Create Context for JNDI lookup
 				Context ctx = new InitialContext(contextParams);

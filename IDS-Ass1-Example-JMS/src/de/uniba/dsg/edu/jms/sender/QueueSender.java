@@ -1,21 +1,21 @@
 package de.uniba.dsg.edu.jms.sender;
 
+import javax.jms.ConnectionFactory;
 import javax.jms.Destination;
 import javax.jms.JMSContext;
-import javax.jms.QueueConnectionFactory;
 import javax.naming.Context;
 import javax.naming.NamingException;
 
 public class QueueSender {
 
-	QueueConnectionFactory connFactory;
+	ConnectionFactory connFactory;
 	Destination destination;
 
 	public QueueSender(Context ctx, String connFactoryName, String queueName)
 			throws NamingException {
 
 		// Look up the connection factory object in the JNDI context provided
-		connFactory = (QueueConnectionFactory) ctx.lookup(connFactoryName);
+		connFactory = (ConnectionFactory) ctx.lookup(connFactoryName);
 		
 		// Look up the Destination in the JNDI context
 		destination = (Destination) ctx.lookup(queueName);

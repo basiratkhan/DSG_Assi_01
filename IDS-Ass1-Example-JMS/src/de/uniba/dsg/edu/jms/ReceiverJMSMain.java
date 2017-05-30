@@ -1,5 +1,6 @@
 package de.uniba.dsg.edu.jms;
 
+import java.util.Hashtable;
 import java.util.Scanner;
 
 import javax.naming.Context;
@@ -16,15 +17,16 @@ public class ReceiverJMSMain {
 							+ "java ReceiverJMSMain <hostname> <connFactoryName> <queueName>");
 		} else {
 			try {
-				// Set the host to be used for JNDI lookups - properties will be
-				// read by new InitialContext()
-				System.setProperty("org.omg.CORBA.ORBInitialHost", args[0]);
-				// Port is by default 3700 (if you have not changed Glassfish
-				// Config)
-				System.setProperty("org.omg.CORBA.ORBInitialPort", "3700");
+				Hashtable<String, String> contextParams = new Hashtable<>();
+
+				// For use with the File System JNDI Service Provider
+				contextParams.put(Context.INITIAL_CONTEXT_FACTORY,
+					"com.sun.jndi.fscontext.RefFSContextFactory");
+				// TODO adjust this line if you have not set the storage to "file:///C:/TEMP/JndiStorage"
+				contextParams.put(Context.PROVIDER_URL, "file:///D:/TEMP/JmsStorage");
 
 				// Create Context for JNDI lookup
-				Context ctx = new InitialContext();
+				Context ctx = new InitialContext(contextParams); 
 
 				// Create QueueReceiver (see class implementation)
 				QueueReceiver server = new QueueReceiver(ctx, args[1], args[2]);
